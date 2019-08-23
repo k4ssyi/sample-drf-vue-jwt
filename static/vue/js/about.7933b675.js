@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{f820:function(t,e,s){"use strict";s.r(e);var n=function(){var t=this,e=t.$createElement,s=t._self._c||e;return s("div",[t._v("About Page")])},o=[],a=s("41cb"),u={name:"about",mounted(){this.checkLoggedIn()},methods:{checkLoggedIn(){this.$session.start(),this.$session.has("token")||a["a"].push("jwt-auth")}}},c=u,i=s("2877"),h=Object(i["a"])(c,n,o,!1,null,null,null);e["default"]=h.exports}}]);
+//# sourceMappingURL=about.7933b675.js.map
