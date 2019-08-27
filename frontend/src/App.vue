@@ -52,8 +52,7 @@ export default {
   },
   methods: {
     is_session() {
-      this.$session.start();
-      if (this.$session.has("token")) {
+      if (localStorage.token) {
         this.is_logout = true;
       } else {
         this.is_login = true;

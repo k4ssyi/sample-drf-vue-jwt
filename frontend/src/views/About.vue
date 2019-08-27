@@ -12,8 +12,7 @@ export default {
   },
   methods: {
     checkLoggedIn() {
-      this.$session.start();
-      if (!this.$session.has("token")) {
+      if (!localStorage.token) {
         router.push("jwt-auth");
       }
     }

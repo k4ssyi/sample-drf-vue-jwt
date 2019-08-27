@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
-import vueSession from 'vue-session'
+// import vueSession from 'vue-session'
 
-Vue.use(vueSession)
+// Vue.use(vueSession)
 
 Vue.config.productionTip = false
 

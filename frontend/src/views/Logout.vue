@@ -8,13 +8,12 @@ import router from "../router";
 export default {
   name: "Auth",
   mounted() {
-    this.sessionDeleteLogout();
+    this.tokenDeleteLogout();
   },
   methods: {
-    sessionDeleteLogout() {
-      this.$session.start();
-      if (this.$session.has("token")) {
-        this.$session.remove("token");
+    tokenDeleteLogout() {
+      if (localStorage.token) {
+        localStorage.removeItem("token");
         router.push("/");
       } else {
         router.push("/jwt-auth");

@@ -77,8 +77,9 @@ export default {
         axios
           .post(process.env.VUE_APP_HOST + "auth/", this.credentials)
           .then(res => {
-            this.$session.start();
-            this.$session.set("token", res.data.token);
+            localStorage.setItem('token', res.data.token)
+            localStorage.setItem('user', this.credentials.username)
+            localStorage.setItem('password', this.credentials.password)
             router.push("/about");
           })
           // eslint-disable-next-line
@@ -96,9 +97,8 @@ export default {
       }
     },
     checkLoggedIn() {
-      this.$session.start();
-      if (this.$session.has("token")) {
-        router.push("/");
+      if (localStorage.token) {
+        router.push('/')
       }
     }
   }
