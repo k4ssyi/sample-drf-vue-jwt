@@ -14,7 +14,7 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
-# urlpatterns += (re_path('', RedirectView.as_view(url='/')),)
+urlpatterns += (re_path('', RedirectView.as_view(url='/')),)
 
 if settings.DEBUG:
     import debug_toolbar

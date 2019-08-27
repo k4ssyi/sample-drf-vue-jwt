@@ -8,55 +8,51 @@
         </router-link>
       </v-spacer>
 
-      <div v-if="is_login">
-        <router-link :to="{name: 'jwtAuth'}">
-          <v-btn color="blue" dark target="_blank" @click="is_session">
-            <span class="mr-2">Login</span>
-          </v-btn>
-        </router-link>
+      <div v-if="!isLoggedIn">
+        <v-btn color="blue" dark target="_blank" @click="clickLogin">
+          <span class="mr-2">Login</span>
+        </v-btn>
       </div>
-      <div v-if="is_logout">
-        <router-link :to="{name: 'logout'}">
-          <v-btn color="red" dark target="_blank" @click="is_session">
-            <span class="mr-2">Logout</span>
-          </v-btn>
-        </router-link>
+      <div v-if="isLoggedIn">
+        <v-btn color="red" dark target="_blank" @click="clickLogout">
+          <span class="mr-2">Logout</span>
+        </v-btn>
       </div>
     </v-app-bar>
 
     <v-content>
-      <Home :is_login="is_login" :is_logout="is_logout" />
+      <router-view />
     </v-content>
   </v-app>
 </template>
 
 <script>
-import Home from "./views/Home";
-
 export default {
-  components: {
-    Home
-  },
-  name: "home",
-  data: () => ({
-    is_login: false,
-    is_logout: false
-  }),
-  mounted() {
-    this.is_session();
-  },
-  watch: {
-    is_login() {
-      this.is_session();
+  name: "app",
+  computed: {
+    username: function() {
+      return this.$store.getters["username"];
+    },
+    isLoggedIn: function() {
+      if (this.$store.getters["isLoggedIn"] && localStorage.token != null){
+        return true
+      } else {
+        return false
+      }
     }
   },
   methods: {
-    is_session() {
-      if (localStorage.token) {
-        this.is_logout = true;
-      } else {
-        this.is_login = true;
-      }
+    // ログアウト押下
+    clickLogout() {
+      // 認証トークンを削除
+      localStorage.removeItem("token");
+      // storeのユーザ情報をクリア
+      this.$store.commit("clear");
+      this.$router.replace("/jwt-auth");
+    },
+    // ログイン押下
+    clickLogin() {
+      this.$router.replace("/jwt-auth");
     }
   }
 };

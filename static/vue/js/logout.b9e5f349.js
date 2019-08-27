@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["logout"],{c100:function(s,e,t){"use strict";t.r(e);var o=function(){var s=this,e=s.$createElement,t=s._self._c||e;return t("p",[s._v("ログアウトします")])},n=[],u=t("41cb"),i={name:"Auth",mounted(){this.sessionDeleteLogout()},methods:{sessionDeleteLogout(){this.$session.start(),this.$session.has("token")?(this.$session.remove("token"),u["a"].push("/")):u["a"].push("/jwt-auth")}}},a=i,h=t("2877"),l=Object(h["a"])(a,o,n,!1,null,null,null);e["default"]=l.exports}}]);
-//# sourceMappingURL=logout.b9e5f349.js.map

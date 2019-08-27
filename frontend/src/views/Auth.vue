@@ -77,9 +77,10 @@ export default {
         axios
           .post(process.env.VUE_APP_HOST + "auth/", this.credentials)
           .then(res => {
+            // ローカルストレージにtokenを保存
             localStorage.setItem('token', res.data.token)
-            localStorage.setItem('user', this.credentials.username)
-            localStorage.setItem('password', this.credentials.password)
+            // ユーザ情報をstoreに保存
+            this.$store.commit('set', this.credentials.username)
             router.push("/about");
           })
           // eslint-disable-next-line
